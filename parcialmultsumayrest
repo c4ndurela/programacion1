@@ -8,24 +8,30 @@ del tercer array determinar el min max y punto medio del arreglo */
 
 void cargaArray1(int multiplos[]);
 void muestraArray1(int array2[]);
+void multiplos(int array[]);
 void cargaArray2(int numeros[]);
-void muestraArray2([]);
-int sumRest(int []);
-int suma[];
+void muestraArray2(int sumrest[]);
 
-int sumapares
+
+
+
 
 int main() {
-    cargaArray1();
-    muestraArray1();
-    
+    int array1[9];
+    cargaArray1(array1);
+    muestraArray1(array1);
+    multiplos(array1);
+
+    int array2[9];
+    cargaArray2(array2);
+    muestraArray2(array2);
 
     return 0;
 }    
 
 
-void cargaArray1(int multiplos[]){
-int i;
+void cargaArray1(int multiplos[]){//cargo en el array 10 numeros ingesados
+    int i;
     printf("Ingrese 10 números menores a 50 y mayores a -50: \n");
     for(i = 0; i<=9; i++){    
         scanf("%d", &multiplos[i]);
@@ -35,21 +41,27 @@ int i;
         } 
     }
 }    
-void muestraArray1(int array2[]){
+void muestraArray1(int array2[]) {//muestro el contenido del array 
+    int i;
     printf("Dado este array:\n [");
     for(i = 0;i<=9; i++){
         printf(" %d", array2[i]);
     }
     printf("]\n");
+}
 
+void multiplos(int array[]){ //calculo cuales son los multiplos de 15
+    int i;
     printf("Los siguientes números son múltiplos de 15: \n");
     for(i =0; i<=9; i++){
-        if (array2[i] % 15 == 0) {
-        printf(" %d \n", array2[i]);
+        if (array[i] % 15 == 0) {
+        printf(" %d \n", array[i]);
         }
     }
 }
+
 void cargaArray2(int numeros[]){
+    int i;
     printf("Ingrese otros 10 números menores a 50 y mayores a -50: \n");
     for(i = 0; i<=9; i++){    
         scanf("%d", &numeros[i]);
@@ -59,12 +71,16 @@ void cargaArray2(int numeros[]){
         } 
     }
 }
-void muestraArray2([]){
-     
+void muestraArray2(int sumrest[]){
+    int i;
+    int sumapares = 0;
+    printf("Los elementos del segundo array son:\n");
+    printf("[ ");
     for (i = 0; i<=9; i++){
         scanf("%d", &sumrest[i]);
         if (sumrest[i] % 2 == 0){
             sumapares = sumrest[i]+sumapares;
         } 
+        printf("]\n");
     }
 }
