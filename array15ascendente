@@ -1,0 +1,51 @@
+/*Declarar un array A de 15 elementos enteros. Solicitar al usuario el ingreso de un valor por vez e ir colocando dicho entero en el
+array, donde cada elemento previo existente en el array A deba ser menor o igual y cada elemento posterior deba ser mayor al que el
+usuario ingresó. En cada paso mostrar el estado del array. Al finalizar deberá quedar el array ordenado de forma ascendente*/
+#include <stdio.h>
+
+#define TAMANO_ARRAY 15
+
+// Función para insertar un valor en un array ordenado
+void insertarOrdenado(int arr[], int *n, int valor) {
+    int i = *n - 1;
+    
+    // Desplazar los elementos mayores al valor a la derecha
+    while (i >= 0 && arr[i] > valor) {
+        arr[i + 1] = arr[i];
+        i--;
+    }
+    
+    // Insertar el valor en su posición adecuada
+    arr[i + 1] = valor;
+    
+    // Incrementar el tamaño del array
+    (*n)++;
+}
+
+// Función para imprimir un array
+void imprimirArray(int arr[], int n) {
+    printf("Estado del array:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int A[TAMANO_ARRAY];
+    int n = 0; // Tamaño actual del array
+    
+    printf("Ingrese %d valores enteros de forma ordenada:\n", TAMANO_ARRAY);
+    
+    // Solicitar al usuario que ingrese los valores y colocarlos en el array ordenadamente
+    for (int i = 0; i < TAMANO_ARRAY; i++) {
+        int valor;
+        printf("Ingrese el valor número %d: ", i + 1);
+        scanf("%d", &valor);
+        
+        insertarOrdenado(A, &n, valor);
+        imprimirArray(A, n);
+    }
+    
+    return 0;
+}
