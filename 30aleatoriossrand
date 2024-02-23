@@ -1,0 +1,26 @@
+/*un array de 30 numeros aleatorios y mostrarlos*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define SIZEARRAY 30
+
+int main() {
+    srand(time(NULL)); // Semilla para la generación de números aleatorios
+    
+    int array[SIZEARRAY]; // Declaración del array
+    
+    // Cargar el array con números aleatorios
+    for (int i = 0; i < TAMANO_ARRAY; i++) {
+        array[i] = rand() % 100; // Generar números aleatorios entre 0 y 99
+    }
+    
+    // Mostrar el array por pantalla
+    printf("Array de enteros aleatorios:\n");
+    for (int i = 0; i < TAMANO_ARRAY; i++) {
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
