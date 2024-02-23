@@ -13,7 +13,7 @@ void cargaArray2(int numeros[]);
 void muestraArray2(int sumrest[]);
 void operacionArrays(int array[], int array2 [], int resultado[]);
 int muestraArray();
-
+void obtenerMinMaxPuntoMedio(int resultado[]);
 
 
 
@@ -32,13 +32,15 @@ int main() {
 
     printf("Resultado de la operación entre los dos arrays:\n");
     muestraArray(resultado);
+    
+    obtenerMinMaxPuntoMedio(resultado);
 
 
     return 0;
 }    
 
 
-void cargaArray1(int multiplos[]){//cargo en el array 10 numeros ingesados
+void cargaArray1(int multiplos[]) {//cargo en el array 10 numeros ingesados
     int i;
     printf("Ingrese 10 números menores a 50 y mayores a -50: \n");
     for(i = 0; i<=9; i++){    
@@ -48,7 +50,8 @@ void cargaArray1(int multiplos[]){//cargo en el array 10 numeros ingesados
                     i--;
         } 
     }
-}    
+} 
+
 void muestraArray1(int array2[]) {//muestro el contenido del array 
     int i;
     printf("Dado este array:\n [");
@@ -81,21 +84,54 @@ void cargaArray2(int numeros[]){
 }
 
 void operacionArrays(int array1[], int array2[], int resultado[]) {
-    for (int i = 0; i < 9; i++) {
-        if (array1[i] % 2 == 0) { // Si el número en la posición i de array1 es par
-            resultado[i] = array1[i] + array2[i];
-        } else { // Si el número en la posición i de array1 es impar
+    for (int i = 0; i <= 9; i++) {
+        if (array1[i] % 2 == 0 && array2[i] % 2 == 0) { // si los dos números en la posición i de array1 y 2 son par
+            resultado[i] = array1[i] + array2[i]; //los suma
+        }
+        else if (array1[i] % 2 == 0 && array2[i] % 2 != 0) { //si el segundo num es impar lo resta
             resultado[i] = array1[i] - array2[i];
         }
+        else if (array1[i] % 2 != 0 && array2[i] % 2 != 0) { //si los dos num son impar los resta a ambos
+            resultado[i] = -(array1[i] + array2[i]);
+        }
+        else { //si el primer es impar lo resta y sum el segundo
+            resultado[i] = -array1[i] + array2[i];
+        }
     }
+
 }
 
 int muestraArray(int array[]) {
     printf("[");
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i <= 9; i++) {
         printf(" %d", array[i]);
     }
     printf(" ]\n");
     return 0;
 }
+
+void obtenerMinMaxPuntoMedio(int resultado[]) {
+    // Inicializar variables para el mínimo, máximo y la suma total
+    int min = resultado[0];
+    int max = resultado[0];
+    int suma = resultado[0];
+
+    for (int i = 1; i <= 9; i++) { // Recorrer el array para encontrar el mínimo, el máximo y calcular la suma total
+        if (resultado[i] < min) {
+            min = resultado[i];
+        }
+        if (resultado[i] > max) {
+            max = resultado[i];
+        }
+        suma += resultado[i];
+    }
+    int puntoMedio = suma / 9;
+
+    // Mostrar los resultados
+    printf("El número mínimo en el array es: %d\n", min);
+    printf("El número máximo en el array es: %d\n", max);
+    printf("El punto medio del array es: %d\n", puntoMedio);
+}
+
+
 
