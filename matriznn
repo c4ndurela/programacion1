@@ -1,0 +1,28 @@
+/*Permitir la carga automática de una matriz de dimensión NxN y mostrarla por pantalla.*/
+#include <stdio.h>
+
+#define N 3 // Puedes cambiar este valor para modificar la dimensión de la matriz
+
+int main() {
+    // Declaración de la matriz de dimensiones NxN
+    int matriz[N][N];
+    
+    // Cargar la matriz automáticamente
+    int contador = 1;
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            matriz[i][j] = contador++;
+        }
+    }
+    
+    // Mostrar la matriz por pantalla
+    printf("La matriz cargada automáticamente de dimensiones %dx%d es:\n", N, N);
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("%d\t", matriz[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
