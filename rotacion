@@ -1,0 +1,65 @@
+/*Dado un array A de N enteros cargados manualmente o bien de forma automática y un número entero r en el rango [-(N-1), N-1].
+El valor r impondrá rotaciones a derecha (en caso de r positivo) o rotaciones a izquierda (en caso de r negativo) sobre los elementos del
+array A. Una rotación es el cambio de posición en los elementos del array.*/
+#include <stdio.h>
+
+void rotarDerecha(int arr[], int n, int r) {
+    int temp[r];
+    for (int i = 0; i < r; i++) {
+        temp[i] = arr[n - r + i];
+    }
+    for (int i = n - 1; i >= r; i--) {
+        arr[i] = arr[i - r];
+    }
+    for (int i = 0; i < r; i++) {
+        arr[i] = temp[i];
+    }
+}
+
+void rotarIzquierda(int arr[], int n, int r) {
+    int temp[r];
+    for (int i = 0; i < r; i++) {
+        temp[i] = arr[i];
+    }
+    for (int i = 0; i < n - r; i++) {
+        arr[i] = arr[i + r];
+    }
+    for (int i = n - r, j = 0; i < n; i++, j++) {
+        arr[i] = temp[j];
+    }
+}
+
+void imprimirArray(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int N;
+    printf("Ingrese el tamaño del array: ");
+    scanf("%d", &N);
+    
+    int A[N];
+    printf("Ingrese los %d elementos del array:\n", N);
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &A[i]);
+    }
+    
+    int r;
+    printf("Ingrese el valor de r en el rango [-(%d-1), %d-1]: ", N, N);
+    scanf("%d", &r);
+    
+    if (r >= 0) {
+        rotarDerecha(A, N, r);
+        printf("Después de rotar a la derecha %d veces:\n", r);
+    } else {
+        rotarIzquierda(A, N, -r);
+        printf("Después de rotar a la izquierda %d veces:\n", -r);
+    }
+    
+    imprimirArray(A, N);
+    
+    return 0;
+}
