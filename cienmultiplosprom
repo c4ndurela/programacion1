@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+#define ARRAY_SIZE 10
+#define MIN_RANGE 101
+#define MAX_RANGE 501
+#define FREC_SIZE (MAX_RANGE - MIN_RANGE + 1)
+
+int main() {
+    int array[ARRAY_SIZE];
+    int i;
+    int min, max;
+    int multiplos100 = 0;
+    int frecuencia[FREC_SIZE] = {0}; // Modificación del tamaño del array de frecuencia
+
+    // Solicitar al usuario que ingrese los valores y validar el rango
+    printf("Ingrese 10 enteros positivos en el rango de 101 a 501:\n");
+    for (i = 0; i < ARRAY_SIZE; i++) {
+        do {
+            printf("Ingrese el entero %d: ", i + 1);
+            scanf("%d", &array[i]);
+            if (array[i] < MIN_RANGE || array[i] > MAX_RANGE) {
+                printf("El número debe estar en el rango de %d a %d.\n", MIN_RANGE, MAX_RANGE);
+            }
+        } while (array[i] < MIN_RANGE || array[i] > MAX_RANGE);
+    }
+
+    // Inicializar min y max con el primer elemento del array
+    min = max = array[0];
+
+    // Buscar mínimos, máximos y múltiplos de 100
+    for (i = 0; i < ARRAY_SIZE; i++) {
+        if (array[i] % 100 == 0) {
+            multiplos100++;
+        }
+        if (array[i] < min) {
+            min = array[i];
+        }
+        if (array[i] > max) {
+            max = array[i];
+        }
+        frecuencia[array[i] - MIN_RANGE]++; // Ajuste en el índice
+    }
+
+    // Mostrar múltiplos de 100
+    printf("Hay %d múltiplos de 100\n", multiplos100);
+
+    // Mostrar mínimo y máximos y su frecuencia
+    printf("Mínimo: %d - Aparece veces: %d\n", min, frecuencia[min - MIN_RANGE]);
+    printf("Máximo: %d - Aparece veces: %d\n", max, frecuencia[max - MIN_RANGE]);
+
+    // Determinar el punto medio entre min y max
+    int puntoMedio = (min + max) / 2;
+    if (puntoMedio == min || puntoMedio == max) {
+        printf("No hay ningún número que sea el punto medio entre %d y %d\n", min, max);
+    } else {
+        // Verificar si el punto medio está en el array
+        if (puntoMedio >= MIN_RANGE && puntoMedio <= MAX_RANGE) { // Verificar si está dentro del rango
+            printf("Número punto medio entre %d y %d: %d - Aparece veces: %d\n", min, max, puntoMedio, frecuencia[puntoMedio - MIN_RANGE]);
+        } else {
+            printf("No hay ningún número que sea el punto medio entre %d y %d\n", min, max);
+        }
+    }
+
+    return 0;
+}
