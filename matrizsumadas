@@ -1,0 +1,50 @@
+/*3) Dadas dos matrices de dimensión NxN, llamadas X e Y, mostrar por pantalla la suma de las mismas.*/
+#include <stdio.h>
+
+#define N 3 // Puedes cambiar este valor para modificar la dimensión de las matrices
+
+int main() {
+    // Declaración de las matrices X e Y de dimensiones NxN
+    int X[N][N];
+    int Y[N][N];
+    
+    // Cargar las matrices X e Y automáticamente (solo como ejemplo)
+    int contador = 1;
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            X[i][j] = contador++;
+            Y[i][j] = contador++;
+        }
+    }
+    
+    // Mostrar la matriz X por pantalla
+    printf("Matriz X de dimensiones %dx%d:\n", N, N);
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("%d\t", X[i][j]);
+        }
+        printf("\n");
+    }
+    
+    // Mostrar la matriz Y por pantalla
+    printf("\nMatriz Y de dimensiones %dx%d:\n", N, N);
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("%d\t", Y[i][j]);
+        }
+        printf("\n");
+    }
+    
+    // Realizar la suma de las matrices X e Y
+    int suma[N][N];
+    printf("\nLa suma de las matrices X e Y es:\n");
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            suma[i][j] = X[i][j] + Y[i][j];
+            printf("%d\t", suma[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
