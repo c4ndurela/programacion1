@@ -1,0 +1,49 @@
+Dado un array de 10 enteros positivos en el rango [0, 100] cargados aleatoriamente, mostrarlo por pantalla, luego ordenar sus
+elementos de manera ascendente y finalmente mostrar el resultado.
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define TAMANO_ARRAY 10
+
+// Función de comparación para qsort
+int comparar(const void *a, const void *b) {
+    return (*(int*)a - *(int*)b);
+}
+
+// Función para generar un número aleatorio en el rango [min, max]
+int generarAleatorio(int min, int max) {
+    return min + rand() % (max - min + 1);
+}
+
+// Función para imprimir un array
+void imprimirArray(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    // Semilla para la generación de números aleatorios
+    srand(time(NULL));
+    
+    // Declaración y generación del array de enteros aleatorios
+    int array[TAMANO_ARRAY];
+    for (int i = 0; i < TAMANO_ARRAY; i++) {
+        array[i] = generarAleatorio(0, 100);
+    }
+    
+    // Mostrar el array original
+    printf("Array original:\n");
+    imprimirArray(array, TAMANO_ARRAY);
+    
+    // Ordenar el array de manera ascendente
+    qsort(array, TAMANO_ARRAY, sizeof(int), comparar);
+    
+    // Mostrar el array ordenado
+    printf("\nArray ordenado de manera ascendente:\n");
+    imprimirArray(array, TAMANO_ARRAY);
+    
+    return 0;
+}
