@@ -1,0 +1,26 @@
+/*A1-1) Declare un array de 10 enteros y permita que el usuario ingrese valores comprendidos
+ entre el -10 y el 10 (asegurar esto) y luego lo muestre por pantalla.*/
+
+#include <stdio.h>
+
+#define TAMAÑO 10
+
+int main() {
+    int numeros[TAMAÑO];
+    
+    printf("Ingrese 10 números enteros entre -10 y 10:\n");
+    for (int i = 0; i < TAMAÑO; i++) {
+        do {
+            printf("Ingrese el número %d: ", i + 1);
+            scanf("%d", &numeros[i]);
+        } while (numeros[i] < -10 || numeros[i] > 10);
+    }
+    printf("\nLos números ingresados son:\n");
+    for (int i = 0; i < TAMAÑO; i++) {
+        printf("%d ", numeros[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+
