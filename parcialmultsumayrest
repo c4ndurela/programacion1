@@ -11,7 +11,8 @@ void muestraArray1(int array2[]);
 void multiplos(int array[]);
 void cargaArray2(int numeros[]);
 void muestraArray2(int sumrest[]);
-
+void operacionArrays(int array[], int array2 [], int resultado[]);
+int muestraArray();
 
 
 
@@ -25,6 +26,13 @@ int main() {
     int array2[9];
     cargaArray2(array2);
     muestraArray1(array2);
+    
+    int resultado[9];
+    operacionArrays(array1, array2, resultado);
+
+    printf("Resultado de la operación entre los dos arrays:\n");
+    muestraArray(resultado);
+
 
     return 0;
 }    
@@ -72,16 +80,22 @@ void cargaArray2(int numeros[]){
     }
 }
 
-
-/*void 
-    int sumapares = 0;
-    printf("Los elementos del segundo array son:\n");
-    printf("[ ");
-    for (i = 0; i<=9; i++){
-        scanf("%d", &sumrest[i]);
-        if (sumrest[i] % 2 == 0){
-            sumapares = sumrest[i]+sumapares;
-        } 
-        printf("]\n");
+void operacionArrays(int array1[], int array2[], int resultado[]) {
+    for (int i = 0; i < 9; i++) {
+        if (array1[i] % 2 == 0) { // Si el número en la posición i de array1 es par
+            resultado[i] = array1[i] + array2[i];
+        } else { // Si el número en la posición i de array1 es impar
+            resultado[i] = array1[i] - array2[i];
+        }
     }
-}*/
+}
+
+int muestraArray(int array[]) {
+    printf("[");
+    for (int i = 0; i < 9; i++) {
+        printf(" %d", array[i]);
+    }
+    printf(" ]\n");
+    return 0;
+}
+
