@@ -1,0 +1,17 @@
+/* C se considera un lenguaje de alto nivel debido a su capacidad para proporcionar abstracciones efectivas
+y portabilidad mientras sigue siendo lo suficientemente eficiente como para realizar operaciones de bajo nivel cuando sea necesario.
+En el lenguaje de programación C, el operador & se utiliza para obtener la dirección de memoria de una variable. Esta dirección de memoria
+representa la ubicación física donde se almacena el valor de la variable en la RAM del sistema.
+for, while, y do while son estructuras de control de flujo que permiten la repetición de un bloque de código mientras se cumpla una condición.
+for: La inicialización se ejecuta una vez al comienzo del bucle.
+La condición se evalúa antes de cada iteración. Si es verdadera, se ejecuta el bloque de código del bucle; de lo contrario, se sale del bucle.
+El incremento/decremento se ejecuta al final de cada iteración.
+Es útil cuando sabes cuántas veces quieres repetir el bucle o cuando necesitas un control más preciso sobre la iteración.
+WHILE La condición se evalúa antes de ejecutar el bloque de código del bucle.
+Si es verdadera, el bloque de código se ejecuta; de lo contrario, se sale del bucle.
+Es útil cuando no sabes cuántas veces quieres repetir el bucle, pero quieres que el bloque de código se ejecute mientras una condición sea verdadera.
+do while:
+Similar al bucle while, pero la condición se evalúa después de ejecutar el bloque de código del bucle.
+Esto garantiza que el bloque de código se ejecutará al menos una vez, independientemente de si la condición es verdadera 
+o falsa en la primera evaluación. Es útil cuando deseas que el bloque de código se ejecute al menos una vez, 
+antes de verificar la condición de repetición.*/
