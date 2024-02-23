@@ -1,0 +1,63 @@
+/*Dado un array de 10 elementos, enteros positivos menores que 5000 que deben ser
+ingresados manualmente, controlando que no se permitan números fuera de rango.
+Se solicita lo siguiente:
+1. Determinar si en el array si hay números con cifras correlativas en orden
+estrictamente ascendente. Ejemplos: 123, 45, 789, 3456.
+2. Indicar cuantos son y sus posicones dentro del array.
+En caso de no haber ninguno indicar por pantalla “No hay numeros que cumplan la
+condicion indicada”
+3. La salida del programa debe ser exactamente igual a la indicada debajo*/
+#include <stdio.h>
+
+int array [9];
+
+int sonCorrelativos(int numero) {
+    int ultimoDigito = numero % 10; // Tomamos el último dígito
+    numero /= 10; // Quitamos el último dígito
+
+    while (numero > 0) {
+        int digito = numero % 10; // Tomamos el siguiente dígito
+        if (digito != ultimoDigito - 1) {
+            return 0; // No son correlativos ascendentes
+        }
+        ultimoDigito = digito;
+        numero /= 10; // Quitamos el último dígito
+    }
+
+    return 1; // Todos los dígitos son correlativos ascendentes
+}
+
+int main() {
+    /*int numero;*/
+    int i;
+    for(i = 0; i<=9; i++){
+        printf("Ingrese 10 números menores a 5000: \n");    
+        scanf("%d", &array[i]);
+            if (array[i]>5000){
+                printf("ese no es un numero menor a 5000.");
+                i--;
+            } 
+    }
+    printf("Dado este array:\n [");
+    for(i = 0;i<=9; i++){
+        printf(" %d", array[i]);
+    }
+    printf("]\n");
+
+    printf("Los siguientes números son correlativos: \n");
+    for(i =0; i<=9; i++){
+        if (sonCorrelativos(array[i])){
+        printf("%d en posición %d \n", array[i],i);
+        }
+    }
+    
+
+
+    /*if (sonCorrelativos(numero)) {
+        printf("Todos los dígitos son correlativos ascendentes.\n");
+    } else {
+        printf("No todos los dígitos son correlativos ascendentes.\n");
+    }*/
+
+    return 0;
+}
