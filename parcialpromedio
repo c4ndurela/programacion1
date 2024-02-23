@@ -1,0 +1,73 @@
+/*dado un array de 10 enteros positivos  que deben ser ingresados manualmente, que estén dentro del rango [101 a 999] (validar esto):
+- indicar cual es el promedio
+-indicar cuantas veces aparece cada numero en el array (considerar marcar los numeros ya revisados anteriormente)
+-determinar si alguno de los numeros del array es igual al promedio o la distancia es menor a 5 (valor absoluto) o mayor a 5 del promedio. 
+La salida debe ser con cada numero del array por ejemplo así:
+102) aparece 2 veces - no es el promedio - distancia >5*/
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+#define ARRAY_SIZE 10
+#define MIN_RANGE 101
+#define MAX_RANGE 999
+
+int main() {
+    int array[ARRAY_SIZE];
+    int i, j;
+    int suma = 0;
+    float promedio;
+    bool promedio_cercano = false;
+
+    // Solicitar al usuario que ingrese los valores y validar el rango
+    printf("Ingrese 10 enteros positivos en el rango de 101 a 999:\n");
+    for (i = 0; i < ARRAY_SIZE; i++) {
+        do {
+            printf("Ingrese el entero %d: ", i + 1);
+            scanf("%d", &array[i]);
+            if (array[i] < MIN_RANGE || array[i] > MAX_RANGE) {
+                printf("El número debe estar en el rango de %d a %d.\n", MIN_RANGE, MAX_RANGE);
+            }
+        } while (array[i] < MIN_RANGE || array[i] > MAX_RANGE);
+        suma += array[i];
+    }
+
+    // Calcular el promedio
+    promedio = (float)suma / ARRAY_SIZE;
+
+    // Mostrar el promedio
+    printf("\nEl promedio de los números ingresados es: %.2f\n", promedio);
+
+    // Mostrar la frecuencia de cada número
+    printf("\nFrecuencia de cada número y comparación con el promedio:\n");
+    for (i = 0; i < ARRAY_SIZE; i++) {
+        if (array[i] == -1) {
+            continue;  // Ignorar los números ya contabilizados
+        }
+
+        int frecuencia = 1;
+        for (j = i + 1; j < ARRAY_SIZE; j++) {
+            if (array[j] == array[i]) {
+                frecuencia++;
+                array[j] = -1; // Marcar el número como contabilizado
+            }
+        }
+
+        // Verificar si el número es igual al promedio o está cerca
+        int diferencia = abs(array[i] - promedio);
+        if (array[i] == promedio) {
+            printf("%d) aparece %d veces - es el promedio - distancia 0\n", array[i], frecuencia);
+        } else if (diferencia <= 5) {
+            printf("%d) aparece %d veces - distancia <= 5 al promedio\n", array[i], frecuencia);
+            promedio_cercano = true;
+        } else {
+            printf("%d) aparece %d veces - distancia > 5 al promedio\n", array[i], frecuencia);
+        }
+    }
+
+    if (!promedio_cercano) {
+        printf("Ningún número está cerca del promedio.\n");
+    }
+
+    return 0;
+}
