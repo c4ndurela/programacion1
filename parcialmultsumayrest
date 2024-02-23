@@ -24,7 +24,7 @@ int main() {
 
     int array2[9];
     cargaArray2(array2);
-    muestraArray2(array2);
+    muestraArray1(array2);
 
     return 0;
 }    
@@ -71,8 +71,9 @@ void cargaArray2(int numeros[]){
         } 
     }
 }
-void muestraArray2(int sumrest[]){
-    int i;
+
+
+/*void 
     int sumapares = 0;
     printf("Los elementos del segundo array son:\n");
     printf("[ ");
@@ -83,4 +84,4 @@ void muestraArray2(int sumrest[]){
         } 
         printf("]\n");
     }
-}
+}*/
