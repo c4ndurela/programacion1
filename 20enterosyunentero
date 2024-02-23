@@ -1,0 +1,63 @@
+/*Dado un array A de 20 enteros positivos en el rango [0, 100] cargados aleatoriamente, y un entero positivo e, determinar si dicho
+entero e está presente en el array. Extender luego el programa para indicar no solo si está, sino también en cuantas ocasiones aparece.*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define TAMANO_ARRAY 20
+
+// Función para generar un número aleatorio en el rango [min, max]
+int generarAleatorio(int min, int max) {
+    return min + rand() % (max - min + 1);
+}
+
+// Función para imprimir un array
+void imprimirArray(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+// Función para verificar si un número está presente en un array y contar su frecuencia
+int contarOcurrencias(int arr[], int n, int e) {
+    int contador = 0;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == e) {
+            contador++;
+        }
+    }
+    return contador;
+}
+
+int main() {
+    // Semilla para la generación de números aleatorios
+    srand(time(NULL));
+    
+    // Declaración y generación del array de enteros aleatorios
+    int A[TAMANO_ARRAY];
+    for (int i = 0; i < TAMANO_ARRAY; i++) {
+        A[i] = generarAleatorio(0, 100);
+    }
+    
+    // Mostrar el array generado aleatoriamente
+    printf("Array generado aleatoriamente:\n");
+    imprimirArray(A, TAMANO_ARRAY);
+    
+    // Pedir al usuario que ingrese el número a buscar
+    int e;
+    printf("Ingrese un número entero positivo para buscar en el array: ");
+    scanf("%d", &e);
+    
+    // Verificar si el número está presente en el array y contar su frecuencia
+    int frecuencia = contarOcurrencias(A, TAMANO_ARRAY, e);
+    
+    // Mostrar el resultado
+    if (frecuencia > 0) {
+        printf("El número %d está presente en el array y aparece %d veces.\n", e, frecuencia);
+    } else {
+        printf("El número %d no está presente en el array.\n", e);
+    }
+    
+    return 0;
+}
