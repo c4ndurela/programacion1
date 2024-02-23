@@ -1,0 +1,70 @@
+/*dado un array de 10 enteros en el rango de -50 a 50 (validar esto) y que deben ser ingresados manualmente
+indicar cuales de ellos son multiplos de 15 en el primer arreglo
+Dado otro array similar al ant, se pide que sume los pares y reste los impares y se guarde el 
+resultado en un tercer array
+del tercer array determinar el min max y punto medio del arreglo */
+#include <stdio.h>
+#include <stdlib.h>
+
+void cargaArray1(int multiplos[]);
+void muestraArray1(int array2[]);
+void cargaArray2(int numeros[]);
+void muestraArray2([]);
+int sumRest(int []);
+int suma[];
+
+int sumapares
+
+int main() {
+    cargaArray1();
+    muestraArray1();
+    
+
+    return 0;
+}    
+
+
+void cargaArray1(int multiplos[]){
+int i;
+    printf("Ingrese 10 números menores a 50 y mayores a -50: \n");
+    for(i = 0; i<=9; i++){    
+        scanf("%d", &multiplos[i]);
+        if (multiplos[i]>50 || multiplos[i]< -50){
+            printf("ese no es un numero en el rango solicitado.\n");
+                    i--;
+        } 
+    }
+}    
+void muestraArray1(int array2[]){
+    printf("Dado este array:\n [");
+    for(i = 0;i<=9; i++){
+        printf(" %d", array2[i]);
+    }
+    printf("]\n");
+
+    printf("Los siguientes números son múltiplos de 15: \n");
+    for(i =0; i<=9; i++){
+        if (array2[i] % 15 == 0) {
+        printf(" %d \n", array2[i]);
+        }
+    }
+}
+void cargaArray2(int numeros[]){
+    printf("Ingrese otros 10 números menores a 50 y mayores a -50: \n");
+    for(i = 0; i<=9; i++){    
+        scanf("%d", &numeros[i]);
+        if (numeros[i]>50 || numeros[i]< -50){
+            printf("ese no es un numero en el rango solicitado.\n");
+            i--;
+        } 
+    }
+}
+void muestraArray2([]){
+     
+    for (i = 0; i<=9; i++){
+        scanf("%d", &sumrest[i]);
+        if (sumrest[i] % 2 == 0){
+            sumapares = sumrest[i]+sumapares;
+        } 
+    }
+}
